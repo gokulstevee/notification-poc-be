@@ -57,7 +57,7 @@ export const likePost = async (req: Request, res: Response): Promise<any> => {
 
       const messageContent = `Your post "${post.title ?? "-"}", was liked by ${
         liker.userName
-      }`;
+      }.`;
 
       const message = {
         id: uuidv4(),

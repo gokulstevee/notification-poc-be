@@ -32,7 +32,7 @@ export const startNotificationSqsConsumer = async (queueUrl: string) => {
       const command = new ReceiveMessageCommand({
         QueueUrl: queueUrl,
         MaxNumberOfMessages: 10,
-        WaitTimeSeconds: 5,
+        WaitTimeSeconds: 3,
       });
       const data = await sqsClient.send(command);
 

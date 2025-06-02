@@ -4,14 +4,20 @@ import { AuthRequest } from "../middleware/auth";
 
 export const createPost = async (req: Request, res: Response): Promise<any> => {
   try {
-    const { content } = req.body;
     const userId = (req as AuthRequest).user?.userId;
 
     if (!userId) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
+    const { content, title } = req.body;
+
+    if (!content || !title) {
+      return res.status(400).json({ message: "Title and Content is required" });
+    }
+
     const post = new Post({
+      title,
       content,
       createdBy: userId,
     });
@@ -43,6 +49,7 @@ export const getAllPosts = async (req: Request, res: Response) => {
     const mappedPosts = posts.map((post) => {
       return {
         id: post._id,
+        title: post.title,
         content: post.content,
         createdBy:
           post.createdBy &&

@@ -20,12 +20,10 @@ export const notificationListener = (req: Request, res: Response) => {
   // Add client to map
   sseClients.set(userId, res);
 
-  // Heartbeat to keep connection alive
   const heartbeat = setInterval(() => {
     res.write(": keep-alive\n\n");
   }, 25000); // 25 seconds
 
-  // Remove client and clear heartbeat on close
   req.on("close", () => {
     clearInterval(heartbeat);
     sseClients.delete(userId);

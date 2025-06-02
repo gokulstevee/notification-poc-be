@@ -25,6 +25,50 @@ It supports user authentication, post creation, post likes, real-time notificati
 - Server-Sent Events (SSE)
 - TypeScript
 
+---
+
+## Getting Started
+
+### 1. Clone the repository
+
+```sh
+git clone https://github.com/gokulstevee/notification-poc-be.git
+cd notification-poc-be
+```
+
+### 2. Install dependencies
+
+```sh
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file in the root directory:
+
+```
+MONGO_URI=your_mongodb_uri
+PORT=8000
+JWT_SECRET=your_jwt_secret
+
+AWS_REGION=your_aws_region
+AWS_ACCESS_KEY_ID=your_aws_access_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+AWS_SQS_QUEUE_URL=your_sqs_queue_url
+
+FRONT_END_URLS=http://localhost:5173,https://notification-poc-fe.vercel.app/
+```
+
+### 4. Run the server
+
+```sh
+npm run start
+```
+
+The server will run on `http://localhost:8000` by default.
+
+---
+
 ## API Endpoints
 
 ### Auth

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: insyd-notification-system-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start
+    envVars:
+      - key: MONGO_URI
+      - key: JWT_SECRET
+      - key: AWS_REGION
+      - key: AWS_ACCESS_KEY_ID
+      - key: AWS_SECRET_ACCESS_KEY
+      - key: AWS_SQS_QUEUE_URL
+      - key: FRONT_END_URLS
+    autoDeploy: true
